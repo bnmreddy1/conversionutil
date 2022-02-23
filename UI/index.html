@@ -1,0 +1,86 @@
+<html>
+  <head>
+
+    <title>Unit Conversion</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="./script.js"></script>
+    <style>
+		table, th, td {
+  			border: 1px solid black;
+  			padding: 5px;
+		}
+		table {
+  			border-spacing: 15px;
+		}
+  </style>
+  </head>
+
+  <body ng-app="unitConversionApp" >
+  		<div  ng-controller="unitConversionController">
+    		<h2>Unit Conversion Tutorial</h2>
+				<form action="javascript:void(0)">
+					<table ng-init="getUnitMesures()">
+						<thead>
+							<th>Input Numerical Value</th>
+							<th>Input Unit of Measure</th>
+							<th>Target Unit of Measure Value</th>
+							<th>Student Response</th>
+							<!--<th>Output</th>-->
+						</thead>
+						<tbody>
+							<td> <input type="number" ng-model="teacher.inputValue"/> </td>
+							<td>
+								<select name="users" ng-model="teacher.conversionFrom">
+									<option value="">--Select Unit--</option>
+									<option ng-repeat="option in unitList" value="{{option.code}}">{{option.value}}</option>
+								</select>
+							</td>
+							<td>
+								<select name="users" ng-model="teacher.conversionTo">
+									<option value="">--Select Unit--</option>
+									<option ng-repeat="option in unitList" value="{{option.code}}">{{option.value}}</option>
+								</select>
+							</td>
+							<td> <input type="number" ng-model="teacher.studentResponse" /> </td>
+							<!--<td> {{calculatedOutput}} </td>-->
+						</tbody>
+					</table>
+
+					</br>
+
+					<button ng-click="getData(teacher)">
+						Calculate
+					</button>
+			</form>
+
+
+			<h2>Results</h2>
+
+			<div ng-if="history.length === 0">
+				<span> Nothing to show yet </span>
+			</div>
+
+			<table ng-if="history.length > 0">
+				<thead>
+					<tr>
+						<th>Input Numerical Value</th>
+						<th>Input Unit of Measure</th>
+						<th>Target Unit of Measure Value</th>
+						<th>Student Response</th>
+						<th>Output</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="i in history">
+						<td> {{i.inputValue}}</td>
+						<td> {{i.conversionFrom}}</td>
+						<td> {{i.conversionTo}}</td>
+						<td> {{i.studentResponse}}</td>
+						<td> {{i.output}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+    </body>
+</html>
