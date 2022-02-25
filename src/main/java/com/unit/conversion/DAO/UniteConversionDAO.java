@@ -33,6 +33,7 @@ public class UniteConversionDAO {
         conversionList.add(new MetricConversion("celsius", "fahrenheit", "(value * 9 / 5) + 32"));
         conversionList.add(new MetricConversion("celsius", "kelvin", "value + 273.15"));
         conversionList.add(new MetricConversion("celsius", "rankine", "(value * 9 / 5) + 491.67"));
+
         conversionList.add(new MetricConversion("fahrenheit", "celsius", "(value - 32) * 5 / 9"));
         conversionList.add(new MetricConversion("fahrenheit", "kelvin", "(value - 32) * 5 / 9 + 273.15"));
         conversionList.add(new MetricConversion("fahrenheit", "rankine", "(value - 32) + 491.67"));
@@ -42,26 +43,23 @@ public class UniteConversionDAO {
         conversionList.add(new MetricConversion("kelvin", "rankine", "(value - 273.15) * 9 / 5 + 491.67"));
 
         conversionList.add(new MetricConversion("rankine", "celsius", "(value - 491.67) * 5 / 9"));
+        conversionList.add(new MetricConversion("kelvin", "vnumber", "(value>0 && value<300)?0:(value>301 && Value<450)?1:2 "));
         conversionList.add(new MetricConversion("rankine", "fahrenheit", "(value - 491.67) + 32"));
         conversionList.add(new MetricConversion("rankine", "kelvin", "(value - 491.67) * 5 / 9 + 273.15"));
 
         measureList.add(new Code("rankine","Rankine"));
+        measureList.add(new Code("vnumber","Vnumber"));
         measureList.add(new Code("kelvin","Kelvin"));
-
         measureList.add(new Code("celsius","Celsius"));
         measureList.add(new Code("fahrenheit","Fahrenheit"));
 
     }
 
-
-
     public List<MetricConversion> getConversionList() {
-
         return conversionList;
     }
 
     public List<Code> getMeasureList() {
-
         return measureList;
     }
 

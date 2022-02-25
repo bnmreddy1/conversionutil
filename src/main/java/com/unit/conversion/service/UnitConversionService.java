@@ -74,6 +74,8 @@ public class UnitConversionService {
 			ValidationError validationError = new ValidationError(Field.studntResponse,INVALID_AMOUNT);
 			validationErrorList.add(validationError);
 		}
+
+
 		Optional<MetricConversion> opt = conversionList.stream()
 				.filter(c -> c.getConversionFrom().equalsIgnoreCase(conversionRequest.getConversionFrom())
 				)
@@ -84,7 +86,7 @@ public class UnitConversionService {
 			validationErrorList.add(validationError);
 		}
 		opt = conversionList.stream()
-				.filter(c -> c.getConversionTo().equalsIgnoreCase(conversionRequest.getConversionFrom())
+				.filter(c -> c.getConversionTo().equalsIgnoreCase(conversionRequest.getConversionTo())
 				)
 				.findFirst();
 		if (!opt.isPresent())
